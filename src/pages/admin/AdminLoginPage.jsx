@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Lock, User, Eye, EyeOff, ArrowLeft, ShieldAlert, Sprout } from 'lucide-react';
+import { Lock, User, Eye, EyeOff, ArrowLeft, ShieldAlert } from 'lucide-react';
 
 export const AdminLoginPage = () => {
   const { login, navigateTo } = useApp();
@@ -48,9 +48,7 @@ export const AdminLoginPage = () => {
         {/* Card Header */}
         <div className="bg-[#1c4234] p-8 text-center text-white relative">
           <div className="flex items-center justify-center gap-2.5 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/20">
-              <Sprout className="w-6 h-6 text-[#95d5b2]" />
-            </div>
+            <img src="/logo-desa.jpeg" alt="Logo" className="w-8 h-8 object-contain" />
             <span className="font-poppins font-bold text-2xl text-white tracking-tight">
               Ruang<span className="text-[#95d5b2]">Tani</span>
             </span>

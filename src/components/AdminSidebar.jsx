@@ -11,8 +11,7 @@ import {
   Menu,
   X,
   UserCheck,
-  ChevronRight,
-  Sprout
+  ChevronRight
 } from 'lucide-react';
 
 export const AdminSidebar = () => {
@@ -62,9 +61,7 @@ export const AdminSidebar = () => {
       {/* Mobile Top Bar for Admin */}
       <div className="lg:hidden bg-[#0a1f14] text-white px-4 py-3 flex items-center justify-between sticky top-0 z-40 shadow-md border-b border-white/10 font-manrope">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-[#1c4234] flex items-center justify-center text-[#95d5b2]">
-            <Sprout className="w-4 h-4" />
-          </div>
+          <img src="/logo-desa.jpeg" alt="Logo" className="w-8 h-8 object-contain" />
           <span className="font-poppins font-bold text-sm tracking-tight">Admin RuangTani Dawuhan</span>
         </div>
         <button
@@ -94,9 +91,7 @@ export const AdminSidebar = () => {
           {/* Brand Header — RuangTani */}
           <div className="p-6 border-b border-white/10 bg-[#1c4234]/30">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#1c4234] flex items-center justify-center text-white border border-white/10 shrink-0">
-                <Sprout className="w-6 h-6 text-[#95d5b2]" />
-              </div>
+              <img src="/logo-desa.jpeg" alt="Logo" className="w-8 h-8 object-contain" />
               <div>
                 <span className="text-[10px] font-poppins font-bold uppercase tracking-widest text-[#c9a96e] bg-[#c9a96e]/15 px-2 py-0.5 rounded-full border border-[#c9a96e]/30">
                   Panel Operator

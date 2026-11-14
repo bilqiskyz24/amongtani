@@ -81,6 +81,8 @@ export const AppProvider = ({ children }) => {
 
   // Auth Handlers
   const login = (username, password) => {
+    // CATATAN: Untuk keperluan demo/presentasi, kita pakai hardcode dulu
+    // agar tidak terjadi error library bcrypt di sisi frontend.
     if (username === 'admin' && password === 'admin123') {
       setIsAdmin(true);
       setCurrentView('admin-dashboard');
@@ -278,10 +280,10 @@ export const AppProvider = ({ children }) => {
       .reduce((sum, h) => sum + (Number(h.jumlahKg) || 0), 0);
 
     // Total stock in warehouse (All 4 commodities)
-    const totalStokGudang = 
-      (currentStocks.Padi || 0) + 
-      (currentStocks.Jagung || 0) + 
-      (currentStocks.Kedelai || 0) + 
+    const totalStokGudang =
+      (currentStocks.Padi || 0) +
+      (currentStocks.Jagung || 0) +
+      (currentStocks.Kedelai || 0) +
       (currentStocks['Kacang Hijau'] || 0);
 
     return {
@@ -312,10 +314,10 @@ export const AppProvider = ({ children }) => {
     });
     const totalKgMonth = currentMonthHarvests.reduce((acc, curr) => acc + (Number(curr.jumlahKg) || 0), 0);
 
-    const totalStokGabah = 
-      (currentStocks.Padi || 0) + 
-      (currentStocks.Jagung || 0) + 
-      (currentStocks.Kedelai || 0) + 
+    const totalStokGabah =
+      (currentStocks.Padi || 0) +
+      (currentStocks.Jagung || 0) +
+      (currentStocks.Kedelai || 0) +
       (currentStocks['Kacang Hijau'] || 0);
 
     return {

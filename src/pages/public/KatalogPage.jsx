@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { formatRupiah, formatNumber } from '../../utils/formatters';
 import { 
-  ShoppingBag, 
   MessageSquare, 
   CheckCircle, 
   ShieldCheck, 
@@ -10,8 +9,7 @@ import {
   Scale, 
   Sparkles,
   PhoneCall,
-  Info,
-  Sprout
+  Info
 } from 'lucide-react';
 
 export const KatalogPage = () => {
@@ -23,12 +21,25 @@ export const KatalogPage = () => {
     : products.filter(p => p.kategori === selectedFilter);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 font-manrope">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10 font-manrope">
       
+      {/* Brand Header Pojok Kiri Atas */}
+      <div className="flex items-center gap-3">
+        <img src="/logo-desa.jpeg" alt="Logo" className="w-8 h-8 object-contain" />
+        <div>
+          <span className="font-poppins font-bold text-sm text-[#1c4234] block">
+            Kelompok Tani Marsudi Among Tani
+          </span>
+          <span className="text-[11px] text-gray-500 font-manrope">
+            Desa Dawuhan, Kec. Banyumas
+          </span>
+        </div>
+      </div>
+
       {/* Header Banner */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
         <div className="inline-flex items-center gap-2 bg-[#dbf0e3] text-[#1c4234] px-4 py-1.5 rounded-full text-xs font-poppins font-bold uppercase tracking-wider">
-          <ShoppingBag className="w-3.5 h-3.5 text-[#1c4234]" />
+          <img src="/logo-desa.jpeg" alt="Logo" className="w-8 h-8 object-contain" />
           Katalog Pangan Petani Desa Dawuhan
         </div>
         

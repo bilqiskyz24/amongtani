@@ -1,5 +1,3 @@
-// Data Resmi & Terintegrasi Sistem Informasi Kelompok Tani Marsudi Among Tani Desa Dawuhan
-
 export const INITIAL_PRODUCTS = [
   {
     id: 'prod-padi',
@@ -10,7 +8,7 @@ export const INITIAL_PRODUCTS = [
     satuan: 'kg',
     stokAwal: 3850,
     deskripsi: 'Beras putih pulen hasil panen sawah beririgasi teknis Desa Dawuhan. Ditanam secara organik bersertifikat, bebas pestisida kimia sintetis dengan bulir utuh dan aroma alami.',
-    gambar: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
+    gambar: '/beras-organik.jpeg', // <--- FOTO BARU BERAS
     keunggulan: ['Organik Bersertifikat', 'Pulen & Alami', 'Kadar Air Terjaga 14%', 'Bebas Pemutih Kimia'],
     kemasanTersedia: ['5 kg', '10 kg', '25 kg', '50 kg (Karung)']
   },
@@ -23,7 +21,7 @@ export const INITIAL_PRODUCTS = [
     satuan: 'kg',
     stokAwal: 2400,
     deskripsi: 'Jagung pipil kering berkualitas tinggi dengan kadar air rendah (<14%). Sangat cocok untuk bahan pakan ternak berkualitas maupun industri olahan pangan.',
-    gambar: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=800&q=80',
+    gambar: '/jagung.jpeg',
     keunggulan: ['Kadar Air Kering <14%', 'Bulir Emas Bersih', 'Bebas Jamur & Aflatoksin'],
     kemasanTersedia: ['25 kg', '50 kg (Karung)']
   },
@@ -36,7 +34,7 @@ export const INITIAL_PRODUCTS = [
     satuan: 'kg',
     stokAwal: 1750,
     deskripsi: 'Kedelai varietas Anjasmoro dengan biji besar kekuningan yang kaya protein nabati. Menjadi komoditas berprestasi Juara 1 Tingkat Kabupaten Banyumas & Juara 2 Tingkat Provinsi Jawa Tengah.',
-    gambar: 'https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&w=800&q=80',
+    gambar: '/kedelai.jpeg',
     keunggulan: ['Biji Besar Padat', 'Juara Komoditas Provinsi', 'Kadar Protein Tinggi', 'Rendemen Tempe Optimal'],
     kemasanTersedia: ['10 kg', '25 kg', '50 kg']
   },
@@ -49,7 +47,7 @@ export const INITIAL_PRODUCTS = [
     satuan: 'kg',
     stokAwal: 950,
     deskripsi: 'Kacang hijau varietas Vima bermutu tinggi hasil panen musim palawija Desa Dawuhan. Biji bernas berkilau, kadar air rendah, cepat empuk saat diolah, serta kaya serat dan antioksidan.',
-    gambar: 'https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=800&q=80',
+    gambar: '/kacang-hijau.jpeg',
     keunggulan: ['Bulir Bernas & Berkilau', 'Cepat Empuk Saat Dimasak', 'Tinggi Serat & Zat Besi', 'Bebas Kutu & Pengawet'],
     kemasanTersedia: ['1 kg', '5 kg', '25 kg (Karung)']
   }
@@ -75,406 +73,52 @@ export const INITIAL_FARMERS = [
 ];
 
 export const INITIAL_HARVESTS = [
-  // --- OKTOBER 2026 -> Termasuk MT 01 (Okt - Jan) ---
-  {
-    id: 'PN-202610-001',
-    tanggal: '2026-10-24',
-    petaniId: 'petani-1',
-    petaniNama: 'Pak Slamet',
-    komoditas: 'Padi',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 01',
-    jumlahKg: 780,
-    catatan: 'Petak sawah Blok Krikil, bulir bernas matang merata tanpa pupuk kimia sintetis'
-  },
-  {
-    id: 'PN-202610-002',
-    tanggal: '2026-10-22',
-    petaniId: 'petani-2',
-    petaniNama: 'Pak Purwadi Paiman',
-    komoditas: 'Padi',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 01',
-    jumlahKg: 850,
-    catatan: 'Lahan sawah KR-11, kadar air 13.8%, bersertifikat organik'
-  },
-  {
-    id: 'PN-202610-003',
-    tanggal: '2026-10-20',
-    petaniId: 'petani-15',
-    petaniNama: 'Pak Sukasno',
-    komoditas: 'Jagung',
-    pengelolaan: 'Non-Organik',
-    masaTanam: 'MT 01',
-    jumlahKg: 620,
-    catatan: 'Blok Serang, jagung hibrida pipilan kering penjemuran 3 hari'
-  },
-  {
-    id: 'PN-202610-004',
-    tanggal: '2026-10-18',
-    petaniId: 'petani-16',
-    petaniNama: 'Pak Sutarjo',
-    komoditas: 'Kedelai',
-    pengelolaan: 'Konversi',
-    masaTanam: 'MT 01',
-    jumlahKg: 420,
-    catatan: 'Blok Margono, masa transisi pemupukan kompos bokashi alami'
-  },
-  {
-    id: 'PN-202610-005',
-    tanggal: '2026-10-16',
-    petaniId: 'petani-4',
-    petaniNama: 'Pak Suwarman',
-    komoditas: 'Kacang Hijau',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 01',
-    jumlahKg: 340,
-    catatan: 'Varietas Vima unggul, biji hijau berkilau siap pasokan lumbung'
-  },
-  {
-    id: 'PN-202610-006',
-    tanggal: '2026-10-14',
-    petaniId: 'petani-3',
-    petaniNama: 'Pak Sukirno',
-    komoditas: 'Padi',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 01',
-    jumlahKg: 720,
-    catatan: 'Lahan KR-03, pemupukan organik teratur sesuai jadwal SOP'
-  },
-  {
-    id: 'PN-202610-007',
-    tanggal: '2026-10-11',
-    petaniId: 'petani-6',
-    petaniNama: 'Pak Yatiman',
-    komoditas: 'Kacang Hijau',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 01',
-    jumlahKg: 280,
-    catatan: 'Blok Blimbing, hasil tumpang sari ramah lingkungan'
-  },
-  {
-    id: 'PN-202610-008',
-    tanggal: '2026-10-07',
-    petaniId: 'petani-7',
-    petaniNama: 'Pak Taslim Miharjo',
-    komoditas: 'Padi',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 01',
-    jumlahKg: 640,
-    catatan: 'Blok Jembangan JB-10, kualitas bulir murni Ciherang'
-  },
-  {
-    id: 'PN-202610-009',
-    tanggal: '2026-10-04',
-    petaniId: 'petani-11',
-    petaniNama: 'Bu Aminah',
-    komoditas: 'Kedelai',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 01',
-    jumlahKg: 390,
-    catatan: 'Blok Wungu WG-01, biji kuning besar pilihan Anjasmoro'
-  },
-
-  // --- SEPTEMBER 2026 -> Termasuk MT 03 (Juni - Sept) ---
-  {
-    id: 'PN-202609-001',
-    tanggal: '2026-09-28',
-    petaniId: 'petani-1',
-    petaniNama: 'Pak Slamet',
-    komoditas: 'Padi',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 03',
-    jumlahKg: 910,
-    catatan: 'Panen musim kemarau beririgasi ulu-ulu Dawuhan teratur'
-  },
-  {
-    id: 'PN-202609-002',
-    tanggal: '2026-09-24',
-    petaniId: 'petani-15',
-    petaniNama: 'Pak Sukasno',
-    komoditas: 'Jagung',
-    pengelolaan: 'Non-Organik',
-    masaTanam: 'MT 03',
-    jumlahKg: 820,
-    catatan: 'Kering giling sempurna, kadar air 13.5%'
-  },
-  {
-    id: 'PN-202609-003',
-    tanggal: '2026-09-20',
-    petaniId: 'petani-4',
-    petaniNama: 'Pak Suwarman',
-    komoditas: 'Kacang Hijau',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 03',
-    jumlahKg: 410,
-    catatan: 'Panen raya kacang hijau MT 03, kadar air rendah & bernas'
-  },
-  {
-    id: 'PN-202609-004',
-    tanggal: '2026-09-17',
-    petaniId: 'petani-2',
-    petaniNama: 'Pak Purwadi Paiman',
-    komoditas: 'Kedelai',
-    pengelolaan: 'Konversi',
-    masaTanam: 'MT 03',
-    jumlahKg: 510,
-    catatan: 'Lahan KR-7 masa konversi, rendemen bagus untuk tahu tempe'
-  },
-  {
-    id: 'PN-202609-005',
-    tanggal: '2026-09-12',
-    petaniId: 'petani-8',
-    petaniNama: 'Pak Sanadi',
-    komoditas: 'Padi',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 03',
-    jumlahKg: 760,
-    catatan: 'Blok Krikil KR-22, padi organik berkualitas lumbung'
-  },
-  {
-    id: 'PN-202609-006',
-    tanggal: '2026-09-08',
-    petaniId: 'petani-14',
-    petaniNama: 'Bu Etti Puji Rahayu',
-    komoditas: 'Kacang Hijau',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 03',
-    jumlahKg: 310,
-    catatan: 'Kacang hijau organik tanpa pestisida kimia sintetis'
-  },
-
-  // --- AGUSTUS 2026 -> Termasuk MT 03 (Juni - Sept) ---
-  {
-    id: 'PN-202608-001',
-    tanggal: '2026-08-28',
-    petaniId: 'petani-1',
-    petaniNama: 'Pak Slamet',
-    komoditas: 'Padi',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 03',
-    jumlahKg: 870,
-    catatan: 'Pemberian pupuk bokashi dan ecoenzym kelompok berhasil optimal'
-  },
-  {
-    id: 'PN-202608-002',
-    tanggal: '2026-08-22',
-    petaniId: 'petani-9',
-    petaniNama: 'Pak Timan Muhajir',
-    komoditas: 'Kedelai',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 03',
-    jumlahKg: 490,
-    catatan: 'Kedelai kuning organik berpredikat unggulan daerah'
-  },
-  {
-    id: 'PN-202608-003',
-    tanggal: '2026-08-18',
-    petaniId: 'petani-12',
-    petaniNama: 'Pak Rusdiarjo Siwan',
-    komoditas: 'Kacang Hijau',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 03',
-    jumlahKg: 350,
-    catatan: 'Varietas Vima hasil panen serempak anggota kelompok'
-  },
-  {
-    id: 'PN-202608-004',
-    tanggal: '2026-08-14',
-    petaniId: 'petani-15',
-    petaniNama: 'Pak Sukasno',
-    komoditas: 'Jagung',
-    pengelolaan: 'Non-Organik',
-    masaTanam: 'MT 03',
-    jumlahKg: 710,
-    catatan: 'Pipilan bersih perontok mekanis traktor kelompok'
-  },
-  {
-    id: 'PN-202608-005',
-    tanggal: '2026-08-09',
-    petaniId: 'petani-16',
-    petaniNama: 'Pak Sutarjo',
-    komoditas: 'Kedelai',
-    pengelolaan: 'Konversi',
-    masaTanam: 'MT 03',
-    jumlahKg: 440,
-    catatan: 'Sortir biji pilihan perajin mendoan khas Banyumas'
-  },
-  {
-    id: 'PN-202608-006',
-    tanggal: '2026-08-04',
-    petaniId: 'petani-10',
-    petaniNama: 'Pak Tisun Sayekti',
-    komoditas: 'Padi',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 03',
-    jumlahKg: 680,
-    catatan: 'Pengeringan lantai jemur swadaya lumbung kelompok'
-  },
-
-  // --- MEI 2026 -> Termasuk MT 02 (Feb - Mei) ---
-  {
-    id: 'PN-202605-001',
-    tanggal: '2026-05-26',
-    petaniId: 'petani-1',
-    petaniNama: 'Pak Slamet',
-    komoditas: 'Padi',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 02',
-    jumlahKg: 950,
-    catatan: 'Panen gadu MT 02, irigasi teknis teratur dari Bendung Krikil'
-  },
-  {
-    id: 'PN-202605-002',
-    tanggal: '2026-05-20',
-    petaniId: 'petani-2',
-    petaniNama: 'Pak Purwadi Paiman',
-    komoditas: 'Padi',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 02',
-    jumlahKg: 890,
-    catatan: 'Beras Ciherang organik murni tanpa pestisida'
-  },
-  {
-    id: 'PN-202605-003',
-    tanggal: '2026-05-15',
-    petaniId: 'petani-4',
-    petaniNama: 'Pak Suwarman',
-    komoditas: 'Kedelai',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 02',
-    jumlahKg: 520,
-    catatan: 'Panen selingan palawija akhir musim gadu MT 02'
-  },
-  {
-    id: 'PN-202605-004',
-    tanggal: '2026-05-10',
-    petaniId: 'petani-13',
-    petaniNama: 'Pak Agung Triyatno',
-    komoditas: 'Kacang Hijau',
-    pengelolaan: 'Organik',
-    masaTanam: 'MT 02',
-    jumlahKg: 360,
-    catatan: 'Kacang hijau bernas varietas unggul'
-  }
+  // --- OKTOBER 2026 ---
+  { id: 'PN-202610-001', tanggal: '2026-10-24', petaniId: 'petani-1', petaniNama: 'Pak Slamet', komoditas: 'Padi', pengelolaan: 'Organik', masaTanam: 'MT 01', jumlahKg: 780, catatan: 'Petak sawah Blok Krikil, bulir bernas matang merata tanpa pupuk kimia sintetis', kualitas: 'A' },
+  { id: 'PN-202610-002', tanggal: '2026-10-22', petaniId: 'petani-2', petaniNama: 'Pak Purwadi Paiman', komoditas: 'Padi', pengelolaan: 'Organik', masaTanam: 'MT 01', jumlahKg: 850, catatan: 'Lahan sawah KR-11, kadar air 13.8%, bersertifikat organik', kualitas: 'A' },
+  { id: 'PN-202610-003', tanggal: '2026-10-20', petaniId: 'petani-15', petaniNama: 'Pak Sukasno', komoditas: 'Jagung', pengelolaan: 'Non-Organik', masaTanam: 'MT 01', jumlahKg: 620, catatan: 'Blok Serang, jagung hibrida pipilan kering penjemuran 3 hari', kualitas: 'B' },
+  { id: 'PN-202610-004', tanggal: '2026-10-18', petaniId: 'petani-16', petaniNama: 'Pak Sutarjo', komoditas: 'Kedelai', pengelolaan: 'Konversi', masaTanam: 'MT 01', jumlahKg: 420, catatan: 'Blok Margono, masa transisi pemupukan kompos bokashi alami', kualitas: 'B' },
+  { id: 'PN-202610-005', tanggal: '2026-10-16', petaniId: 'petani-4', petaniNama: 'Pak Suwarman', komoditas: 'Kacang Hijau', pengelolaan: 'Organik', masaTanam: 'MT 01', jumlahKg: 340, catatan: 'Varietas Vima unggul, biji hijau berkilau siap pasokan lumbung', kualitas: 'A' },
+  { id: 'PN-202610-006', tanggal: '2026-10-14', petaniId: 'petani-3', petaniNama: 'Pak Sukirno', komoditas: 'Padi', pengelolaan: 'Organik', masaTanam: 'MT 01', jumlahKg: 720, catatan: 'Lahan KR-03, pemupukan organik teratur sesuai jadwal SOP', kualitas: 'A' },
+  { id: 'PN-202610-007', tanggal: '2026-10-11', petaniId: 'petani-6', petaniNama: 'Pak Yatiman', komoditas: 'Kacang Hijau', pengelolaan: 'Organik', masaTanam: 'MT 01', jumlahKg: 280, catatan: 'Blok Blimbing, hasil tumpang sari ramah lingkungan', kualitas: 'A' },
+  { id: 'PN-202610-008', tanggal: '2026-10-07', petaniId: 'petani-7', petaniNama: 'Pak Taslim Miharjo', komoditas: 'Padi', pengelolaan: 'Organik', masaTanam: 'MT 01', jumlahKg: 640, catatan: 'Blok Jembangan JB-10, kualitas bulir murni Ciherang', kualitas: 'A' },
+  { id: 'PN-202610-009', tanggal: '2026-10-04', petaniId: 'petani-11', petaniNama: 'Bu Aminah', komoditas: 'Kedelai', pengelolaan: 'Organik', masaTanam: 'MT 01', jumlahKg: 390, catatan: 'Blok Wungu WG-01, biji kuning besar pilihan Anjasmoro', kualitas: 'A' },
+  // --- SEPTEMBER 2026 ---
+  { id: 'PN-202609-001', tanggal: '2026-09-28', petaniId: 'petani-1', petaniNama: 'Pak Slamet', komoditas: 'Padi', pengelolaan: 'Organik', masaTanam: 'MT 03', jumlahKg: 910, catatan: 'Panen musim kemarau beririgasi ulu-ulu Dawuhan teratur', kualitas: 'A' },
+  { id: 'PN-202609-002', tanggal: '2026-09-24', petaniId: 'petani-15', petaniNama: 'Pak Sukasno', komoditas: 'Jagung', pengelolaan: 'Non-Organik', masaTanam: 'MT 03', jumlahKg: 820, catatan: 'Kering giling sempurna, kadar air 13.5%', kualitas: 'B' },
+  { id: 'PN-202609-003', tanggal: '2026-09-20', petaniId: 'petani-4', petaniNama: 'Pak Suwarman', komoditas: 'Kacang Hijau', pengelolaan: 'Organik', masaTanam: 'MT 03', jumlahKg: 410, catatan: 'Panen raya kacang hijau MT 03, kadar air rendah & bernas', kualitas: 'A' },
+  { id: 'PN-202609-004', tanggal: '2026-09-17', petaniId: 'petani-2', petaniNama: 'Pak Purwadi Paiman', komoditas: 'Kedelai', pengelolaan: 'Konversi', masaTanam: 'MT 03', jumlahKg: 510, catatan: 'Lahan KR-7 masa konversi, rendemen bagus untuk tahu tempe', kualitas: 'B' },
+  { id: 'PN-202609-005', tanggal: '2026-09-12', petaniId: 'petani-8', petaniNama: 'Pak Sanadi', komoditas: 'Padi', pengelolaan: 'Organik', masaTanam: 'MT 03', jumlahKg: 760, catatan: 'Blok Krikil KR-22, padi organik berkualitas lumbung', kualitas: 'A' },
+  { id: 'PN-202609-006', tanggal: '2026-09-08', petaniId: 'petani-14', petaniNama: 'Bu Etti Puji Rahayu', komoditas: 'Kacang Hijau', pengelolaan: 'Organik', masaTanam: 'MT 03', jumlahKg: 310, catatan: 'Kacang hijau organik tanpa pestisida kimia sintetis', kualitas: 'A' },
+  // --- AGUSTUS 2026 ---
+  { id: 'PN-202608-001', tanggal: '2026-08-28', petaniId: 'petani-1', petaniNama: 'Pak Slamet', komoditas: 'Padi', pengelolaan: 'Organik', masaTanam: 'MT 03', jumlahKg: 870, catatan: 'Pemberian pupuk bokashi dan ecoenzym kelompok berhasil optimal', kualitas: 'A' },
+  { id: 'PN-202608-002', tanggal: '2026-08-22', petaniId: 'petani-9', petaniNama: 'Pak Timan Muhajir', komoditas: 'Kedelai', pengelolaan: 'Organik', masaTanam: 'MT 03', jumlahKg: 490, catatan: 'Kedelai kuning organik berpredikat unggulan daerah', kualitas: 'A' },
+  { id: 'PN-202608-003', tanggal: '2026-08-18', petaniId: 'petani-12', petaniNama: 'Pak Rusdiarjo Siwan', komoditas: 'Kacang Hijau', pengelolaan: 'Organik', masaTanam: 'MT 03', jumlahKg: 350, catatan: 'Varietas Vima hasil panen serempak anggota kelompok', kualitas: 'A' },
+  { id: 'PN-202608-004', tanggal: '2026-08-14', petaniId: 'petani-15', petaniNama: 'Pak Sukasno', komoditas: 'Jagung', pengelolaan: 'Non-Organik', masaTanam: 'MT 03', jumlahKg: 710, catatan: 'Pipilan bersih perontok mekanis traktor kelompok', kualitas: 'B' },
+  { id: 'PN-202608-005', tanggal: '2026-08-09', petaniId: 'petani-16', petaniNama: 'Pak Sutarjo', komoditas: 'Kedelai', pengelolaan: 'Konversi', masaTanam: 'MT 03', jumlahKg: 440, catatan: 'Sortir biji pilihan perajin mendoan khas Banyumas', kualitas: 'B' },
+  { id: 'PN-202608-006', tanggal: '2026-08-04', petaniId: 'petani-10', petaniNama: 'Pak Tisun Sayekti', komoditas: 'Padi', pengelolaan: 'Organik', masaTanam: 'MT 03', jumlahKg: 680, catatan: 'Pengeringan lantai jemur swadaya lumbung kelompok', kualitas: 'A' },
+  // --- MEI 2026 ---
+  { id: 'PN-202605-001', tanggal: '2026-05-26', petaniId: 'petani-1', petaniNama: 'Pak Slamet', komoditas: 'Padi', pengelolaan: 'Organik', masaTanam: 'MT 02', jumlahKg: 950, catatan: 'Panen gadu MT 02, irigasi teknis teratur dari Bendung Krikil', kualitas: 'A' },
+  { id: 'PN-202605-002', tanggal: '2026-05-20', petaniId: 'petani-2', petaniNama: 'Pak Purwadi Paiman', komoditas: 'Padi', pengelolaan: 'Organik', masaTanam: 'MT 02', jumlahKg: 890, catatan: 'Beras Ciherang organik murni tanpa pestisida', kualitas: 'A' },
+  { id: 'PN-202605-003', tanggal: '2026-05-15', petaniId: 'petani-4', petaniNama: 'Pak Suwarman', komoditas: 'Kedelai', pengelolaan: 'Organik', masaTanam: 'MT 02', jumlahKg: 520, catatan: 'Panen selingan palawija akhir musim gadu MT 02', kualitas: 'A' },
+  { id: 'PN-202605-004', tanggal: '2026-05-10', petaniId: 'petani-13', petaniNama: 'Pak Agung Triyatno', komoditas: 'Kacang Hijau', pengelolaan: 'Organik', masaTanam: 'MT 02', jumlahKg: 360, catatan: 'Kacang hijau bernas varietas unggul', kualitas: 'A' }
 ];
 
 export const INITIAL_SALES = [
   // --- OKTOBER 2026 ---
-  {
-    id: 'JL-202610-001',
-    tanggal: '2026-10-23',
-    komoditas: 'Padi',
-    jumlahKg: 1200,
-    pembeli: 'Koperasi Pertanian Tri Mulya Banyumas',
-    hargaPerKg: 14500,
-    totalNilai: 17400000,
-    status: 'Lunas'
-  },
-  {
-    id: 'JL-202610-002',
-    tanggal: '2026-10-19',
-    komoditas: 'Kedelai',
-    jumlahKg: 500,
-    pembeli: 'Pabrik Tahu Pak Tardi Sokaraja',
-    hargaPerKg: 12800,
-    totalNilai: 6400000,
-    status: 'Lunas'
-  },
-  {
-    id: 'JL-202610-003',
-    tanggal: '2026-10-15',
-    komoditas: 'Kacang Hijau',
-    jumlahKg: 300,
-    pembeli: 'Sentra Oleh-Oleh & Bakpia Banyumas',
-    hargaPerKg: 18500,
-    totalNilai: 5550000,
-    status: 'Lunas'
-  },
-  {
-    id: 'JL-202610-004',
-    tanggal: '2026-10-12',
-    komoditas: 'Jagung',
-    jumlahKg: 800,
-    pembeli: 'Sentra Pakan Unggas Dawuhan Makmur',
-    hargaPerKg: 6200,
-    totalNilai: 4960000,
-    status: 'Lunas'
-  },
-
+  { id: 'JL-202610-001', tanggal: '2026-10-23', komoditas: 'Padi', jumlahKg: 1200, pembeli: 'Koperasi Pertanian Tri Mulya Banyumas', hargaPerKg: 14500, totalNilai: 17400000, status: 'Lunas' },
+  { id: 'JL-202610-002', tanggal: '2026-10-19', komoditas: 'Kedelai', jumlahKg: 500, pembeli: 'Pabrik Tahu Pak Tardi Sokaraja', hargaPerKg: 12800, totalNilai: 6400000, status: 'Lunas' },
+  { id: 'JL-202610-003', tanggal: '2026-10-15', komoditas: 'Kacang Hijau', jumlahKg: 300, pembeli: 'Sentra Oleh-Oleh & Bakpia Banyumas', hargaPerKg: 18500, totalNilai: 5550000, status: 'Lunas' },
+  { id: 'JL-202610-004', tanggal: '2026-10-12', komoditas: 'Jagung', jumlahKg: 800, pembeli: 'Sentra Pakan Unggas Dawuhan Makmur', hargaPerKg: 6200, totalNilai: 4960000, status: 'Lunas' },
   // --- SEPTEMBER 2026 ---
-  {
-    id: 'JL-202609-001',
-    tanggal: '2026-09-26',
-    komoditas: 'Padi',
-    jumlahKg: 1800,
-    pembeli: 'Perum Bulog Subdivre Banyumas',
-    hargaPerKg: 14200,
-    totalNilai: 25560000,
-    status: 'Lunas'
-  },
-  {
-    id: 'JL-202609-002',
-    tanggal: '2026-09-19',
-    komoditas: 'Kacang Hijau',
-    jumlahKg: 350,
-    pembeli: 'Industri Minuman Sari Kacang Hijau Alami',
-    hargaPerKg: 18200,
-    totalNilai: 6370000,
-    status: 'Lunas'
-  },
-  {
-    id: 'JL-202609-003',
-    tanggal: '2026-09-15',
-    komoditas: 'Jagung',
-    jumlahKg: 1100,
-    pembeli: 'Kemitraan Peternak Ayam Broiler Kalisube',
-    hargaPerKg: 6100,
-    totalNilai: 6710000,
-    status: 'Lunas'
-  },
-  {
-    id: 'JL-202609-004',
-    tanggal: '2026-09-10',
-    komoditas: 'Kedelai',
-    jumlahKg: 400,
-    pembeli: 'Pengrajin Tempe Mendoan Dawuhan',
-    hargaPerKg: 12700,
-    totalNilai: 5080000,
-    status: 'Lunas'
-  },
-
+  { id: 'JL-202609-001', tanggal: '2026-09-26', komoditas: 'Padi', jumlahKg: 1800, pembeli: 'Perum Bulog Subdivre Banyumas', hargaPerKg: 14200, totalNilai: 25560000, status: 'Lunas' },
+  { id: 'JL-202609-002', tanggal: '2026-09-19', komoditas: 'Kacang Hijau', jumlahKg: 350, pembeli: 'Industri Minuman Sari Kacang Hijau Alami', hargaPerKg: 18200, totalNilai: 6370000, status: 'Lunas' },
+  { id: 'JL-202609-003', tanggal: '2026-09-15', komoditas: 'Jagung', jumlahKg: 1100, pembeli: 'Kemitraan Peternak Ayam Broiler Kalisube', hargaPerKg: 6100, totalNilai: 6710000, status: 'Lunas' },
+  { id: 'JL-202609-004', tanggal: '2026-09-10', komoditas: 'Kedelai', jumlahKg: 400, pembeli: 'Pengrajin Tempe Mendoan Dawuhan', hargaPerKg: 12700, totalNilai: 5080000, status: 'Lunas' },
   // --- AGUSTUS 2026 ---
-  {
-    id: 'JL-202608-001',
-    tanggal: '2026-08-27',
-    komoditas: 'Padi',
-    jumlahKg: 1600,
-    pembeli: 'Distributor Beras Sejahtera Purwokerto',
-    hargaPerKg: 14000,
-    totalNilai: 22400000,
-    status: 'Lunas'
-  },
-  {
-    id: 'JL-202608-002',
-    tanggal: '2026-08-18',
-    komoditas: 'Jagung',
-    jumlahKg: 950,
-    pembeli: 'Grosir Pakan Ternak Barokah Banyumas',
-    hargaPerKg: 6000,
-    totalNilai: 5700000,
-    status: 'Lunas'
-  },
-  {
-    id: 'JL-202608-003',
-    tanggal: '2026-08-12',
-    komoditas: 'Kacang Hijau',
-    jumlahKg: 250,
-    pembeli: 'Koperasi Kuliner Tradisional Dawuhan',
-    hargaPerKg: 18000,
-    totalNilai: 4500000,
-    status: 'Lunas'
-  }
+  { id: 'JL-202608-001', tanggal: '2026-08-27', komoditas: 'Padi', jumlahKg: 1600, pembeli: 'Distributor Beras Sejahtera Purwokerto', hargaPerKg: 14000, totalNilai: 22400000, status: 'Lunas' },
+  { id: 'JL-202608-002', tanggal: '2026-08-18', komoditas: 'Jagung', jumlahKg: 950, pembeli: 'Grosir Pakan Ternak Barokah Banyumas', hargaPerKg: 6000, totalNilai: 5700000, status: 'Lunas' },
+  { id: 'JL-202608-003', tanggal: '2026-08-12', komoditas: 'Kacang Hijau', jumlahKg: 250, pembeli: 'Koperasi Kuliner Tradisional Dawuhan', hargaPerKg: 18000, totalNilai: 4500000, status: 'Lunas' }
 ];
 
 export const DESA_DAWUHAN_INFO = {
@@ -497,13 +141,17 @@ export const DESA_DAWUHAN_INFO = {
   sekretaris1: 'Pak Sutomo',
   sekretaris2: 'Pak Sukirno',
   bendahara: 'Pak Purwadi Paiman',
-  kontakWA: '6282135942461',
-  teleponDisplay: '+62 821-3594-2461',
+  primaryWA: '+62 813-2738-7302',
+  adminWAs: [
+    { name: 'Admin 1', number: '+62 821-3594-2461' },
+    { name: 'Admin 2', number: '+62 853-2665-3761' },
+  ],
+  teleponDisplay: '+62 813-2738-7302',
   email: 'marsudiamongtani@gmail.com',
   emailDesa: 'siddawuhanbanyumas@gmail.com',
   websiteDesa: 'https://dawuhan-bms.desa.id',
   alamatSekretariat: 'Jalan Pesarehan Adipati Mrapat No 68, RT 03 / RW 02, Desa Dawuhan, Kecamatan Banyumas, Kabupaten Banyumas, Jawa Tengah 53192',
-  
+
   profilDesa: `Desa Dawuhan berada sekitar 5 km di sebelah barat alun-alun Kota Banyumas, terletak di wilayah Kecamatan Banyumas, Kabupaten Banyumas, Jawa Tengah. Nama Dawuhan berasal dari kata "dawuan" dalam bahasa Sunda yang berarti tempat mengatur aliran air ke sawah dan ladang (irigasi pertanian), yang berkembang menjadi "Dawuhan" seiring bercampurnya budaya luhur Jawa dan Sunda di daerah ini. Selain itu, nama ini lekat dengan dawuh (perintah) pendiri Banyumas, Adipati Mrapat (Raden Djoko Kahiman), yang menjadikan desa ini sebagai kompleks pemakaman Bupati Banyumas pertama (Pesarehan Adipati Mrapat No 68).
 
 Dipimpin oleh Kepala Desa Bapak Ruswanto, Desa Dawuhan merupakan kawasan agraris subur sekaligus lumbung pangan dan desa wisata budaya-religi terkemuka. Lahan persawahan Dawuhan dialiri sistem irigasi teknis dari Bendung Gombyang, Bendung Krikil, dan Bendung Dukuh, menghasilkan komoditas tanaman pangan berkelas: Padi sawah organik Ciherang & Mentik Wangi, Jagung hibrida, Kedelai Anjasmoro, dan Kacang Hijau Vima unggul.`,
@@ -515,7 +163,7 @@ Nama "Marsudi Among Tani" diambil dari falsafah luhur: "Marsudi" bermakna ikhtia
 Kelompok ini membina hamparan lahan seluas 20 hektar yang terbagi dalam 6 blok persawahan produktif:
 1. Blok Blimbing (1.74 Ha, Ketua Blok: Pak Yatiman)
 2. Blok Serang (3.74 Ha, Ketua Blok: Pak Sukasno)
-3. Blok Wungu (2.87 Ha, Ketua Blok: Pak Sumarjo)
+3. Blok Wungu (2.87 Ha, Ketua Blok: Pak Suwarman)
 4. Blok Krikil (7.20 Ha, Ketua Blok: Pak Suwarman)
 5. Blok Jembangan (3.03 Ha, Ketua Blok: Pak Taslim Miharjo)
 6. Blok Margono (1.42 Ha, Ketua Blok: Pak Sutarjo)

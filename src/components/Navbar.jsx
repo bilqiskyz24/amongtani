@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import { 
-  ChevronDown, 
-  Lock, 
-  Menu, 
-  X, 
-  TrendingUp, 
-  ShoppingBag, 
-  Home, 
-  MapPin, 
+import {
+  ChevronDown,
+  Lock,
+  Menu,
+  X,
+  TrendingUp,
+  ShoppingBag,
+  Home,
+  MapPin,
   ShieldCheck,
   PhoneCall,
   ExternalLink,
@@ -60,7 +60,7 @@ export const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 transition-all duration-300">
-      
+
       {/* Top Info Micro-bar */}
       <div className="bg-[#0a1f14] text-[#95d5b2] border-b border-white/10 px-4 py-1.5 text-xs font-manrope hidden sm:flex justify-between items-center max-w-full">
         <div className="max-w-7xl mx-auto w-full flex justify-between items-center px-4">
@@ -79,34 +79,38 @@ export const Navbar = () => {
               Desa Dawuhan, Kec. Banyumas
             </span>
             <span className="text-white/30">|</span>
-            <a 
-              href="https://wa.me/6281234567890" 
-              target="_blank" 
-              rel="noreferrer" 
+            <a
+              href="https://wa.me/6281327387302" // Nomor WA Asli dari profil desa
+              target="_blank"
+              rel="noreferrer"
               className="text-[#c9a96e] hover:text-white font-semibold flex items-center gap-1 transition-colors"
             >
-              <PhoneCall className="w-3 h-3" /> Hubungi: 0812-3456-7890
+              <PhoneCall className="w-3 h-3" /> Hubungi: 0813-2738-7302
             </a>
           </span>
         </div>
       </div>
 
       {/* Main Floating Glass Navbar */}
-      <div className={`transition-all duration-300 ${
-        scrolled 
-          ? 'bg-[#ffffff]/95 backdrop-blur-md shadow-md py-3 border-b border-gray-200/80' 
+      <div className={`transition-all duration-300 ${scrolled
+          ? 'bg-[#ffffff]/95 backdrop-blur-md shadow-md py-3 border-b border-gray-200/80'
           : 'bg-[#ffffff]/90 backdrop-blur-sm py-4 border-b border-gray-100'
-      }`}>
+        }`}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            
-            {/* Brand: RuangTani Marsudi Among Tani */}
-            <div 
+
+            {/* Brand: RuangTani Marsudi Among Tani (LOGO DIGANTI) */}
+            <div
               onClick={() => handleNavClick('home')}
               className="flex items-center gap-3 cursor-pointer group select-none"
             >
-              <div className="w-10 h-10 rounded-xl bg-[#1c4234] flex items-center justify-center text-white shadow-md shadow-[#1c4234]/20 group-hover:scale-105 transition-transform">
-                <Sprout className="w-6 h-6 text-[#95d5b2]" />
+              {/* Menggunakan gambar logo dari folder public */}
+              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-[#1c4234]/20 group-hover:scale-105 transition-transform bg-white p-0.5 border border-gray-100">
+                <img
+                  src="/logo-desa.jpeg"
+                  alt="Logo Desa Dawuhan"
+                  className="w-full h-full object-cover rounded-lg"
+                />
               </div>
 
               <div className="text-left">
@@ -126,15 +130,14 @@ export const Navbar = () => {
 
             {/* Orbitani Floating Nav Pill (Center) */}
             <div className="hidden lg:flex items-center gap-1 bg-gray-100/80 p-1.5 rounded-full border border-gray-200 shadow-xs font-manrope">
-              
+
               {/* Home */}
               <button
                 onClick={() => handleNavClick('home')}
-                className={`px-4 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all flex items-center gap-1.5 cursor-pointer ${
-                  currentView === 'home'
+                className={`px-4 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all flex items-center gap-1.5 cursor-pointer ${currentView === 'home'
                     ? 'bg-[#1c4234] text-white shadow-sm'
                     : 'text-gray-700 hover:text-[#1c4234] hover:bg-white/80'
-                }`}
+                  }`}
               >
                 <Home className="w-3.5 h-3.5" />
                 Beranda
@@ -147,11 +150,10 @@ export const Navbar = () => {
                     setTentangOpen(!tentangOpen);
                     setProgramOpen(false);
                   }}
-                  className={`px-4 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all flex items-center gap-1 cursor-pointer ${
-                    isTentangActive
+                  className={`px-4 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all flex items-center gap-1 cursor-pointer ${isTentangActive
                       ? 'bg-[#1c4234] text-white shadow-sm'
                       : 'text-gray-700 hover:text-[#1c4234] hover:bg-white/80'
-                  }`}
+                    }`}
                 >
                   <BookOpen className="w-3.5 h-3.5" />
                   Tentang Kami
@@ -206,11 +208,10 @@ export const Navbar = () => {
                     setProgramOpen(!programOpen);
                     setTentangOpen(false);
                   }}
-                  className={`px-4 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all flex items-center gap-1 cursor-pointer ${
-                    isProgramActive
+                  className={`px-4 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all flex items-center gap-1 cursor-pointer ${isProgramActive
                       ? 'bg-[#1c4234] text-white shadow-sm'
                       : 'text-gray-700 hover:text-[#1c4234] hover:bg-white/80'
-                  }`}
+                    }`}
                 >
                   <TrendingUp className="w-3.5 h-3.5" />
                   Program
@@ -242,11 +243,10 @@ export const Navbar = () => {
               {/* Katalog Produk */}
               <button
                 onClick={() => handleNavClick('katalog')}
-                className={`px-4 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all flex items-center gap-1.5 cursor-pointer ${
-                  currentView === 'katalog'
+                className={`px-4 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all flex items-center gap-1.5 cursor-pointer ${currentView === 'katalog'
                     ? 'bg-[#1c4234] text-white shadow-sm'
                     : 'text-gray-700 hover:text-[#1c4234] hover:bg-white/80'
-                }`}
+                  }`}
               >
                 <ShoppingBag className="w-3.5 h-3.5" />
                 Katalog Produk
@@ -294,9 +294,8 @@ export const Navbar = () => {
         <div className="lg:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-2 shadow-xl animate-in slide-in-from-top-4 font-manrope">
           <button
             onClick={() => handleNavClick('home')}
-            className={`w-full text-left px-4 py-3 rounded-xl font-semibold flex items-center gap-3 ${
-              currentView === 'home' ? 'bg-[#1c4234] text-white' : 'text-gray-800 hover:bg-gray-100'
-            }`}
+            className={`w-full text-left px-4 py-3 rounded-xl font-semibold flex items-center gap-3 ${currentView === 'home' ? 'bg-[#1c4234] text-white' : 'text-gray-800 hover:bg-gray-100'
+              }`}
           >
             <Home className="w-5 h-5" />
             Beranda
@@ -308,17 +307,15 @@ export const Navbar = () => {
             </div>
             <button
               onClick={() => handleNavClick('tentang-desa')}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium ${
-                currentView === 'tentang-desa' ? 'bg-[#dbf0e3] text-[#1c4234] font-bold' : 'text-gray-700 hover:bg-gray-100'
-              }`}
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium ${currentView === 'tentang-desa' ? 'bg-[#dbf0e3] text-[#1c4234] font-bold' : 'text-gray-700 hover:bg-gray-100'
+                }`}
             >
               Profil Desa Dawuhan
             </button>
             <button
               onClick={() => handleNavClick('sejarah-kelompok')}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium ${
-                currentView === 'sejarah-kelompok' ? 'bg-[#dbf0e3] text-[#1c4234] font-bold' : 'text-gray-700 hover:bg-gray-100'
-              }`}
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium ${currentView === 'sejarah-kelompok' ? 'bg-[#dbf0e3] text-[#1c4234] font-bold' : 'text-gray-700 hover:bg-gray-100'
+                }`}
             >
               Sejarah Kelompok Tani
             </button>
@@ -330,9 +327,8 @@ export const Navbar = () => {
             </div>
             <button
               onClick={() => handleNavClick('program')}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium ${
-                currentView === 'program' ? 'bg-[#dbf0e3] text-[#1c4234] font-bold' : 'text-gray-700 hover:bg-gray-100'
-              }`}
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium ${currentView === 'program' ? 'bg-[#dbf0e3] text-[#1c4234] font-bold' : 'text-gray-700 hover:bg-gray-100'
+                }`}
             >
               Hasil Panen & Penjualan
             </button>
@@ -340,9 +336,8 @@ export const Navbar = () => {
 
           <button
             onClick={() => handleNavClick('katalog')}
-            className={`w-full text-left px-4 py-3 rounded-xl font-semibold flex items-center gap-3 ${
-              currentView === 'katalog' ? 'bg-[#1c4234] text-white' : 'text-gray-800 hover:bg-gray-100'
-            }`}
+            className={`w-full text-left px-4 py-3 rounded-xl font-semibold flex items-center gap-3 ${currentView === 'katalog' ? 'bg-[#1c4234] text-white' : 'text-gray-800 hover:bg-gray-100'
+              }`}
           >
             <ShoppingBag className="w-5 h-5" />
             Katalog Produk

@@ -1,19 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { getMasaTanamFromDate } from '../../utils/formatters';
-import { 
-  PlusCircle, 
-  Save, 
-  RotateCcw, 
-  Wheat, 
-  Calendar, 
-  User, 
-  Scale, 
-  Sprout, 
+import {
+  PlusCircle,
+  Save,
+  RotateCcw,
+  Wheat,
+  Calendar,
+  User,
+  Scale,
+  Sprout,
   FileText,
   CheckCircle2,
   Clock,
-  Sparkles
+  UploadCloud // Tambahan ikon untuk upload
 } from 'lucide-react';
 
 export const InputPanenPage = () => {
@@ -101,7 +101,7 @@ export const InputPanenPage = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12 font-manrope">
-      
+
       {/* Title Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -127,11 +127,11 @@ export const InputPanenPage = () => {
 
       {/* Main Single-Screen Form Card */}
       <div className="bg-white rounded-2xl border border-gray-200/80 shadow-xs p-6 sm:p-10 space-y-8">
-        
+
         <form className="space-y-6">
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
+
             {/* Field 1: Dropdown Nama Petani */}
             <div className="space-y-2">
               <label className="block text-xs font-poppins font-bold text-[#1c4234] uppercase tracking-wide flex items-center gap-1.5">
@@ -154,7 +154,7 @@ export const InputPanenPage = () => {
               </p>
             </div>
 
-            {/* Field 2: Dropdown Komoditas (+ Kacang Hijau) */}
+            {/* Field 2: Dropdown Komoditas */}
             <div className="space-y-2">
               <label className="block text-xs font-poppins font-bold text-[#1c4234] uppercase tracking-wide flex items-center gap-1.5">
                 <Wheat className="w-4 h-4 text-[#2d6a4f]" />
@@ -202,7 +202,7 @@ export const InputPanenPage = () => {
               </p>
             </div>
 
-            {/* Field 4: Tanggal Otomatis (Default Hari Ini) */}
+            {/* Field 4: Tanggal Otomatis */}
             <div className="space-y-2">
               <label className="block text-xs font-poppins font-bold text-[#1c4234] uppercase tracking-wide flex items-center gap-1.5">
                 <Calendar className="w-4 h-4 text-[#2d6a4f]" />
@@ -222,28 +222,24 @@ export const InputPanenPage = () => {
 
           </div>
 
-          {/* Field 5: Pilihan Jenis Petani / Pengelolaan Lahan (Organik, Non-Organik, Konversi) */}
+          {/* Field 5: Pilihan Jenis Petani / Pengelolaan Lahan */}
           <div className="space-y-3 pt-2">
             <label className="block text-xs font-poppins font-bold text-[#1c4234] uppercase tracking-wide flex items-center justify-between">
               <span className="flex items-center gap-1.5">
                 <Sprout className="w-4 h-4 text-[#2d6a4f]" />
                 5. Jenis Pengelolaan Tani / Lahan <span className="text-rose-500">*</span>
               </span>
-              <span className="text-[11px] font-manrope font-normal text-gray-500 lowercase">
-                (pengelompokan budidaya anggota)
-              </span>
             </label>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              
+
               {/* Option: Organik */}
               <label
                 onClick={() => setPengelolaan('Organik')}
-                className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
-                  pengelolaan === 'Organik'
+                className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${pengelolaan === 'Organik'
                     ? 'border-[#1c4234] bg-[#f0fdf4] shadow-xs ring-2 ring-[#1c4234]'
                     : 'border-gray-200 hover:border-gray-300 bg-white'
-                }`}
+                  }`}
               >
                 <input
                   type="radio"
@@ -269,11 +265,10 @@ export const InputPanenPage = () => {
               {/* Option: Konversi */}
               <label
                 onClick={() => setPengelolaan('Konversi')}
-                className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
-                  pengelolaan === 'Konversi'
+                className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${pengelolaan === 'Konversi'
                     ? 'border-amber-600 bg-amber-50/70 shadow-xs ring-2 ring-amber-600'
                     : 'border-gray-200 hover:border-gray-300 bg-white'
-                }`}
+                  }`}
               >
                 <input
                   type="radio"
@@ -299,11 +294,10 @@ export const InputPanenPage = () => {
               {/* Option: Non-Organik */}
               <label
                 onClick={() => setPengelolaan('Non-Organik')}
-                className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
-                  pengelolaan === 'Non-Organik'
+                className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${pengelolaan === 'Non-Organik'
                     ? 'border-sky-700 bg-sky-50/70 shadow-xs ring-2 ring-sky-700'
                     : 'border-gray-200 hover:border-gray-300 bg-white'
-                }`}
+                  }`}
               >
                 <input
                   type="radio"
@@ -329,15 +323,12 @@ export const InputPanenPage = () => {
             </div>
           </div>
 
-          {/* Field 6: Masa Tanam (MT 01, MT 02, MT 03) */}
+          {/* Field 6: Masa Tanam */}
           <div className="space-y-3 pt-2">
             <label className="block text-xs font-poppins font-bold text-[#1c4234] uppercase tracking-wide flex items-center justify-between">
               <span className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-[#2d6a4f]" />
                 6. Masa Tanam (Pola Musim Tanam) <span className="text-rose-500">*</span>
-              </span>
-              <span className="text-[11px] font-manrope text-gray-500">
-                Terdeteksi otomatis dari tanggal panen
               </span>
             </label>
 
@@ -353,11 +344,10 @@ export const InputPanenPage = () => {
                     type="button"
                     key={mt.code}
                     onClick={() => setMasaTanam(mt.code)}
-                    className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
-                      isSelected
+                    className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${isSelected
                         ? 'border-[#1c4234] bg-[#f0fdf4] ring-2 ring-[#1c4234]'
                         : 'border-gray-200 hover:border-gray-300 bg-white'
-                    }`}
+                      }`}
                   >
                     <div className="font-poppins font-bold text-sm text-[#1c4234] flex items-center justify-between">
                       <span>{mt.label}</span>
@@ -387,10 +377,28 @@ export const InputPanenPage = () => {
             />
           </div>
 
-          {/* 2 ACTION BUTTONS: [SIMPAN] & [SIMPAN & INPUT LAGI] */}
+          {/* FITUR UPLOAD EXCEL (TAMBAHAN BARU) */}
+          <div className="mt-6 p-6 border-2 border-dashed border-[#1c4234]/30 rounded-xl bg-[#f0fdf4]/50 text-center">
+            <UploadCloud className="w-8 h-8 text-[#2d6a4f] mx-auto mb-2" />
+            <p className="text-sm font-poppins font-bold text-[#1c4234] mb-1">Atau Input Massal via File Excel</p>
+            <p className="text-xs text-gray-500 mb-3">Upload file .xlsx / .xls untuk memasukkan banyak data sekaligus.</p>
+            <input
+              type="file"
+              accept=".xlsx, .xls"
+              className="block w-full text-sm text-gray-500 mx-auto max-w-xs
+                file:mr-4 file:py-2.5 file:px-4
+                file:rounded-full file:border-0
+                file:text-sm file:font-poppins file:font-bold
+                file:bg-[#1c4234] file:text-white
+                hover:file:bg-[#0a1f14] cursor-pointer transition-all"
+            />
+            <p className="text-[10px] text-gray-400 mt-3">Format kolom: Nama Petani | Komoditas | Jumlah (kg) | Tanggal</p>
+          </div>
+
+          {/* 2 ACTION BUTTONS */}
           <div className="pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center gap-4">
-            
-            {/* Button 1: SIMPAN (Redirect to Riwayat) */}
+
+            {/* Button 1: SIMPAN */}
             <button
               type="button"
               onClick={handleSaveOnly}
@@ -400,7 +408,7 @@ export const InputPanenPage = () => {
               <span>SIMPAN DATA</span>
             </button>
 
-            {/* Button 2: SIMPAN & INPUT LAGI (Keeps form open for fast continuous entry) */}
+            {/* Button 2: SIMPAN & INPUT LAGI */}
             <button
               type="button"
               onClick={handleSaveAndInputMore}
