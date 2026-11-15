@@ -18,6 +18,8 @@ import { InputPanenPage } from './pages/admin/InputPanenPage';
 import { RiwayatPanenPage } from './pages/admin/RiwayatPanenPage';
 import { StokPage } from './pages/admin/StokPage';
 import { LaporanPage } from './pages/admin/LaporanPage';
+// IMPORT HALAMAN BARU UNTUK SAINS DATA
+import { AdminAnalyticsPage } from './pages/admin/AdminAnalyticsPage';
 
 const AppContent = () => {
   const { currentView, isAdmin } = useApp();
@@ -47,6 +49,10 @@ const AppContent = () => {
             {currentView === 'admin-riwayat' && <RiwayatPanenPage />}
             {currentView === 'admin-stok' && <StokPage />}
             {currentView === 'admin-laporan' && <LaporanPage />}
+
+            {/* RUTE HALAMAN SAINS DATA BARU */}
+            {currentView === 'admin-analytics' && <AdminAnalyticsPage />}
+
           </main>
         </div>
 

@@ -22,6 +22,11 @@ export const AppProvider = ({ children }) => {
     return localStorage.getItem('ruangtani_isAdmin') === 'true';
   });
 
+  // Role State (Operator / Superadmin)
+  const [adminRole, setAdminRole] = useState(() => {
+    return localStorage.getItem('ruangtani_role') || null;
+  });
+
   // Data States with LocalStorage Persistence
   const [harvests, setHarvests] = useState(() => {
     const saved = localStorage.getItem('ruangtani_harvests');
@@ -38,7 +43,7 @@ export const AppProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : INITIAL_FARMERS;
   });
 
-  // Selected filter period (default to October 2026 for demo data)
+  // Selected filter period
   const [selectedPeriod, setSelectedPeriod] = useState({
     month: '10',
     year: '2026'
@@ -68,6 +73,14 @@ export const AppProvider = ({ children }) => {
   }, [isAdmin]);
 
   useEffect(() => {
+    if (adminRole) {
+      localStorage.setItem('ruangtani_role', adminRole);
+    } else {
+      localStorage.removeItem('ruangtani_role');
+    }
+  }, [adminRole]);
+
+  useEffect(() => {
     localStorage.setItem('ruangtani_harvests', JSON.stringify(harvests));
   }, [harvests]);
 
@@ -81,19 +94,30 @@ export const AppProvider = ({ children }) => {
 
   // Auth Handlers
   const login = (username, password) => {
-    // CATATAN: Untuk keperluan demo/presentasi, kita pakai hardcode dulu
-    // agar tidak terjadi error library bcrypt di sisi frontend.
-    if (username === 'admin' && password === 'admin123') {
+    // AKUN 1: Admin Desa (Operator)
+    if (username === 'admindesa' && password === 'dawuhan2026') {
       setIsAdmin(true);
+      setAdminRole('operator');
       setCurrentView('admin-dashboard');
-      showToast('Berhasil masuk ke Dashboard Admin Kelompok Tani', 'success');
+      showToast('Berhasil masuk sebagai Admin Desa', 'success');
       return { success: true };
     }
-    return { success: false, message: 'Username atau Password salah! (Gunakan: admin / admin123)' };
+
+    // AKUN 2: Super Admin (Pengelola UI/UX)
+    if (username === 'superadmin' && password === 'marsudi1979') {
+      setIsAdmin(true);
+      setAdminRole('superadmin');
+      setCurrentView('admin-dashboard');
+      showToast('Berhasil masuk sebagai Super Admin (UI/UX)', 'success');
+      return { success: true };
+    }
+
+    return { success: false, message: 'Username atau Password salah!' };
   };
 
   const logout = () => {
     setIsAdmin(false);
+    setAdminRole(null);
     setCurrentView('home');
     showToast('Anda telah keluar dari Mode Admin', 'info');
   };
@@ -109,7 +133,7 @@ export const AppProvider = ({ children }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Stock Calculation per Commodity (Padi, Jagung, Kedelai, Kacang Hijau)
+  // Stock Calculation
   const currentStocks = useMemo(() => {
     const baseStocks = {
       Padi: 2500,
@@ -135,7 +159,7 @@ export const AppProvider = ({ children }) => {
     return stockMap;
   }, [harvests, sales]);
 
-  // Reactive Products with Real-time Stock
+  // Reactive Products
   const reactiveProducts = useMemo(() => {
     return INITIAL_PRODUCTS.map(prod => ({
       ...prod,
@@ -156,15 +180,15 @@ export const AppProvider = ({ children }) => {
       petaniId: data.petaniId || 'petani-1',
       petaniNama: data.petaniNama || 'Petani Dawuhan',
       komoditas: data.komoditas || 'Padi',
-      pengelolaan: data.pengelolaan || 'Organik', // Organik | Non-Organik | Konversi
-      masaTanam: mt, // MT 01 | MT 02 | MT 03
+      pengelolaan: data.pengelolaan || 'Organik',
+      masaTanam: mt,
       jumlahKg: Number(data.jumlahKg) || 0,
-      catatan: data.catatan || ''
+      catatan: data.catatan || '',
+      kualitas: data.kualitas || 'A'
     };
 
     setHarvests(prev => [newEntry, ...prev]);
 
-    // Trigger celebratory confetti
     try {
       confetti({
         particleCount: 80,
@@ -208,7 +232,7 @@ export const AppProvider = ({ children }) => {
     showToast('Data panen berhasil dihapus', 'info');
   };
 
-  // Add Sale / Distribution Simulation (to test stock reduction)
+  // Add Sale
   const addSale = (saleData) => {
     const now = new Date();
     const id = `JL-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}-${String(Date.now()).slice(-4)}`;
@@ -224,7 +248,7 @@ export const AppProvider = ({ children }) => {
     };
 
     setSales(prev => [newSale, ...prev]);
-    showToast(`Penyaluran/Penjualan ${newSale.jumlahKg} kg ${newSale.komoditas} berhasil dicatat! Stok lumbung diperbarui.`, 'success');
+    showToast(`Penyaluran/Penjualan ${newSale.jumlahKg} kg ${newSale.komoditas} berhasil dicatat!`, 'success');
   };
 
   // Delete Sale
@@ -244,18 +268,16 @@ export const AppProvider = ({ children }) => {
     showToast('Semua data berhasil di-reset kembali ke data default resmi Dawuhan', 'info');
   };
 
-  // Summaries by Period (Month & Year)
+  // Summaries by Period
   const getSummaryForPeriod = (month, year) => {
     const mStr = String(month).padStart(2, '0');
     const yStr = String(year);
 
-    // Filter harvests in this period
     const periodHarvests = harvests.filter(h => {
       const [hY, hM] = h.tanggal.split('-');
       return hY === yStr && hM === mStr;
     });
 
-    // Filter sales in this period
     const periodSales = sales.filter(s => {
       const [sY, sM] = s.tanggal.split('-');
       return sY === yStr && sM === mStr;
@@ -268,7 +290,6 @@ export const AppProvider = ({ children }) => {
     const activeFarmerIds = new Set(periodHarvests.map(h => h.petaniId || h.petaniNama));
     const petaniAktif = activeFarmerIds.size;
 
-    // Breakdown by Pengelolaan
     const panenOrganik = periodHarvests
       .filter(h => h.pengelolaan === 'Organik')
       .reduce((sum, h) => sum + (Number(h.jumlahKg) || 0), 0);
@@ -279,7 +300,6 @@ export const AppProvider = ({ children }) => {
       .filter(h => h.pengelolaan === 'Konversi')
       .reduce((sum, h) => sum + (Number(h.jumlahKg) || 0), 0);
 
-    // Total stock in warehouse (All 4 commodities)
     const totalStokGudang =
       (currentStocks.Padi || 0) +
       (currentStocks.Jagung || 0) +
@@ -301,7 +321,7 @@ export const AppProvider = ({ children }) => {
     };
   };
 
-  // Today's stats for dashboard
+  // Today's stats
   const todayStats = useMemo(() => {
     const todayStr = new Date().toISOString().split('T')[0];
     const todayHarvests = harvests.filter(h => h.tanggal === todayStr);
@@ -336,6 +356,7 @@ export const AppProvider = ({ children }) => {
         currentView,
         navigateTo,
         isAdmin,
+        adminRole, // <-- Diekspos ke seluruh aplikasi
         login,
         logout,
         harvests,

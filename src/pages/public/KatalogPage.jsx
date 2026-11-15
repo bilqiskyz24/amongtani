@@ -1,236 +1,124 @@
-import React, { useState } from 'react';
-import { useApp } from '../../context/AppContext';
-import { formatRupiah, formatNumber } from '../../utils/formatters';
-import { 
-  MessageSquare, 
-  CheckCircle, 
-  ShieldCheck, 
-  Truck, 
-  Scale, 
-  Sparkles,
-  PhoneCall,
-  Info
-} from 'lucide-react';
+import React from 'react';
+import { useApp } from '../../context/AppContext'; // <-- PATH SUDAH DIPERBAIKI (../../)
+import { CheckCircle2 } from 'lucide-react';
 
 export const KatalogPage = () => {
-  const { products, desaInfo } = useApp();
-  const [selectedFilter, setSelectedFilter] = useState('Semua');
-
-  const filteredProducts = selectedFilter === 'Semua'
-    ? products
-    : products.filter(p => p.kategori === selectedFilter);
+  const { products, navigateTo } = useApp();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10 font-manrope">
-      
-      {/* Brand Header Pojok Kiri Atas */}
-      <div className="flex items-center gap-3">
-        <img src="/logo-desa.jpeg" alt="Logo" className="w-8 h-8 object-contain" />
-        <div>
-          <span className="font-poppins font-bold text-sm text-[#1c4234] block">
-            Kelompok Tani Marsudi Among Tani
-          </span>
-          <span className="text-[11px] text-gray-500 font-manrope">
-            Desa Dawuhan, Kec. Banyumas
-          </span>
-        </div>
-      </div>
+    <div className="bg-gray-50 min-h-screen py-12 font-manrope">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      {/* Header Banner */}
-      <div className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 bg-[#dbf0e3] text-[#1c4234] px-4 py-1.5 rounded-full text-xs font-poppins font-bold uppercase tracking-wider">
-          <img src="/logo-desa.jpeg" alt="Logo" className="w-8 h-8 object-contain" />
-          Katalog Pangan Petani Desa Dawuhan
-        </div>
-        
-        <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#1c4234]">
-          Katalog Hasil Panen Petani
-        </h1>
-        
-        <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-manrope">
-          Dapatkan beras organik pulen bersertifikat, jagung pipil kering berkualitas, kedelai kuning Anjasmoro, dan kacang hijau unggul langsung dari lumbung Poktan Marsudi Among Tani dengan timbangan presisi dan harga yang adil.
-        </p>
-
-        {/* Orbitani Pill Filter Switcher (4 Komoditas) */}
-        <div className="flex flex-wrap justify-center gap-2 pt-2">
-          {['Semua', 'Padi', 'Jagung', 'Kedelai', 'Kacang Hijau'].map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedFilter(category)}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-poppins font-semibold transition-all cursor-pointer ${
-                selectedFilter === category
-                  ? 'bg-[#1c4234] text-white shadow-sm'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Trust Badges in Orbitani Light Green Tints */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[#f0fdf4] p-5 rounded-2xl border border-[#dbf0e3]">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#1c4234] text-white flex items-center justify-center shrink-0">
-            <ShieldCheck className="w-5 h-5 text-[#95d5b2]" />
-          </div>
-          <div>
-            <h4 className="font-poppins font-bold text-[#1c4234] text-sm">100% Panen Petani Dawuhan</h4>
-            <p className="text-xs text-gray-600 font-manrope">Beras organik bersertifikat & bebas kimia sintetis</p>
-          </div>
+        {/* Header Katalog */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h1 className="text-4xl font-poppins font-bold text-[#1c4234] mb-4">
+            Katalog Produk Lumbung Desa
+          </h1>
+          <p className="text-gray-600 text-lg">
+            Produk pertanian berkualitas langsung dari lahan Kelompok Tani Marsudi Among Tani Desa Dawuhan. Pesan mudah via WhatsApp.
+          </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#c9a96e] text-white flex items-center justify-center shrink-0">
-            <Scale className="w-5 h-5" />
-          </div>
-          <div>
-            <h4 className="font-poppins font-bold text-[#1c4234] text-sm">Timbangan Digital Tera</h4>
-            <p className="text-xs text-gray-600 font-manrope">Akurat terverifikasi lumbung kelompok</p>
-          </div>
-        </div>
+        {/* Grid Produk */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#2d6a4f] text-white flex items-center justify-center shrink-0">
-            <Truck className="w-5 h-5 text-[#95d5b2]" />
-          </div>
-          <div>
-            <h4 className="font-poppins font-bold text-[#1c4234] text-sm">Siap Kirim Partai / Eceran</h4>
-            <p className="text-xs text-gray-600 font-manrope">Armada pikap & ekspedisi ke seluruh wilayah</p>
-          </div>
-        </div>
-      </div>
+          {/* Looping data produk dari dummyData.js */}
+          {products.map((product) => (
+            <div key={product.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group overflow-hidden">
 
-      {/* Product Grid (4 Commodities) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {filteredProducts.map((prod) => {
-          // Format strict WA link requested by user:
-          // https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20pesan%20[NAMA_PRODUK]
-          const waUrl = `https://wa.me/${desaInfo.kontakWA}?text=Halo%20Admin,%20saya%20mau%20pesan%20${encodeURIComponent(prod.nama)}`;
-
-          return (
-            <div 
-              key={prod.id} 
-              className="bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:border-[#1c4234]"
-            >
-              <div>
-                {/* Product Image */}
-                <div className="relative h-56 overflow-hidden bg-gray-100">
-                  <img
-                    src={prod.gambar}
-                    alt={prod.nama}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#1c4234]/90 backdrop-blur-xs text-white text-[11px] font-poppins font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                    {prod.kategori}
-                  </div>
-                  
-                  {/* Stock Pill Badge */}
-                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs text-xs font-poppins font-bold text-[#1c4234] border border-[#dbf0e3]">
-                    Stok: {formatNumber(prod.stok)} {prod.satuan}
-                  </div>
+              {/* Bagian Gambar */}
+              <div className="relative h-64 overflow-hidden bg-gray-50">
+                <img
+                  src={product.gambar}
+                  alt={product.nama}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#1c4234] shadow-sm">
+                  {product.kategori}
                 </div>
+                <div className="absolute top-4 right-4 bg-[#1c4234]/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white shadow-sm">
+                  Stok: {product.stok} kg
+                </div>
+              </div>
 
-                {/* Product Details */}
-                <div className="p-6 space-y-4">
+              {/* Bagian Konten */}
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="font-poppins font-bold text-xl text-[#1c4234] leading-tight mb-3">
+                  {product.nama}
+                </h3>
+                <p className="text-gray-500 text-sm line-clamp-3 mb-4">
+                  {product.deskripsi}
+                </p>
+
+                <div className="space-y-4 mb-6 mt-auto">
+                  {/* Keunggulan */}
                   <div>
-                    <h3 className="font-serif font-bold text-xl text-[#1c4234] line-clamp-2 min-h-14">
-                      {prod.nama}
-                    </h3>
-                    <p className="text-xs text-gray-600 font-manrope mt-2 line-clamp-3 leading-relaxed">
-                      {prod.deskripsi}
-                    </p>
-                  </div>
-
-                  {/* Highlights / Keunggulan */}
-                  <div className="space-y-1.5 pt-2 border-t border-gray-100">
-                    <span className="text-[10px] font-poppins font-bold uppercase tracking-wider text-gray-400 block">
-                      Keunggulan Produk:
-                    </span>
-                    <ul className="space-y-1">
-                      {prod.keunggulan.map((keunggulan, idx) => (
-                        <li key={idx} className="flex items-center gap-1.5 text-xs text-gray-700 font-manrope">
-                          <CheckCircle className="w-3.5 h-3.5 text-[#2d6a4f] shrink-0" />
-                          <span>{keunggulan}</span>
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Keunggulan Produk:</p>
+                    <ul className="space-y-1.5">
+                      {product.keunggulan.slice(0, 3).map((item, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0" />
+                          <span>{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Kemasan Tersedia */}
-                  <div className="pt-2 border-t border-gray-100">
-                    <span className="text-[10px] font-poppins font-bold uppercase tracking-wider text-gray-400 block mb-1.5">
-                      Pilihan Kemasan:
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {prod.kemasanTersedia.map((kemasan, idx) => (
-                        <span 
-                          key={idx}
-                          className="bg-gray-100 text-gray-700 text-[11px] font-semibold px-2.5 py-0.5 rounded-full"
-                        >
+                  {/* Kemasan */}
+                  <div>
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Pilihan Kemasan:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {product.kemasanTersedia.map((kemasan, idx) => (
+                        <span key={idx} className="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs font-semibold rounded-md border border-gray-200">
                           {kemasan}
                         </span>
                       ))}
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Price & Action Button */}
-              <div className="p-6 pt-0 space-y-4">
-                <div className="pt-3 border-t border-gray-100 flex items-baseline justify-between">
-                  <div>
-                    <span className="text-[11px] text-gray-400 font-medium block">Harga Satuan Lumbung</span>
-                    <div className="text-2xl font-poppins font-bold text-[#1c4234]">
-                      {formatRupiah(prod.harga)}
-                      <span className="text-xs font-normal text-gray-500"> / {prod.satuan}</span>
-                    </div>
+                {/* Harga */}
+                <div className="pt-4 border-t border-gray-100 mb-5">
+                  <p className="text-xs text-gray-500 mb-1">Harga Satuan Lumbung</p>
+                  <div className="text-3xl font-poppins font-bold text-[#1c4234]">
+                    Rp {product.harga.toLocaleString('id-ID')} <span className="text-sm font-normal text-gray-500">/ kg</span>
                   </div>
                 </div>
 
-                {/* Big Button: Pesan via WA */}
-                <a
-                  href={waUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-full bg-[#1c4234] hover:bg-[#0a1f14] active:scale-98 text-white font-poppins font-bold py-3.5 px-4 rounded-xl text-xs sm:text-sm transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 group cursor-pointer text-center"
-                >
-                  <MessageSquare className="w-4 h-4 text-[#95d5b2] group-hover:scale-110 transition-transform" />
-                  <span>Pesan via WA</span>
-                </a>
+                {/* TOMBOL PESAN VIA WA (PILIHAN ADMIN) */}
+                <div className="space-y-2">
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-wider text-center mb-1">Pesan via WhatsApp:</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {/* Admin 1 */}
+                    <a
+                      href={`https://wa.me/6282135942461?text=Halo%20Pak%20Slamet%20(Admin%201),%20saya%20tertarik%20memesan%20${product.nama}.%20Apakah%20stoknya%20masih%20ada?`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex flex-col items-center justify-center bg-[#1c4234] hover:bg-[#0a1f14] text-white py-2.5 px-2 rounded-xl text-center transition-colors cursor-pointer"
+                    >
+                      <span className="text-[10px] text-gray-300">Admin 1</span>
+                      <span className="text-xs font-bold">Pak Slamet</span>
+                    </a>
+
+                    {/* Admin 2 */}
+                    <a
+                      href={`https://wa.me/6285326653761?text=Halo%20Mba%20Dian%20(Admin%202),%20saya%20tertarik%20memesan%20${product.nama}.%20Apakah%20stoknya%20masih%20ada?`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex flex-col items-center justify-center bg-[#c9a96e] hover:bg-[#b8985c] text-[#0a1f14] py-2.5 px-2 rounded-xl text-center transition-colors cursor-pointer"
+                    >
+                      <span className="text-[10px] text-[#0a1f14]/70">Admin 2</span>
+                      <span className="text-xs font-bold">Mba Dian</span>
+                    </a>
+                  </div>
+                </div>
+
               </div>
             </div>
-          );
-        })}
-      </div>
+          ))}
 
-      {/* Public Purchasing Notice */}
-      <div className="bg-amber-50/60 border border-amber-200/80 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex items-start gap-3">
-          <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
-            <Info className="w-5 h-5" />
-          </div>
-          <div>
-            <h4 className="font-poppins font-bold text-sm text-amber-900">
-              Pemberitahuan Pembelian Publik
-            </h4>
-            <p className="text-xs text-amber-800/90 font-manrope mt-0.5">
-              Untuk menjaga privasi dan ketertiban tata kelola hasil panen, pembelian dilakukan langsung melalui narahubung resmi WhatsApp Kelompok Tani tanpa perlu membuat akun/login.
-            </p>
-          </div>
         </div>
-
-        <a
-          href={`https://wa.me/${desaInfo.kontakWA}?text=Halo%20Admin,%20saya%20ingin%20konsultasi%20pemesanan%20hasil%20panen%20Desa%20Dawuhan`}
-          target="_blank"
-          rel="noreferrer"
-          className="bg-amber-600 hover:bg-amber-700 text-white font-poppins font-semibold text-xs px-5 py-2.5 rounded-full transition-all shrink-0 cursor-pointer"
-        >
-          Konsultasi Admin WA
-        </a>
       </div>
-
     </div>
   );
 };
